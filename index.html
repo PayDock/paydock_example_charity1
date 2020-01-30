@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Children's Giving Fund</title>
+
+    <link rel="icon" href="https://paydock.com/wp-content/uploads/2016/10/logo_v3_hexagon.png" sizes="32x32" />
+    <link rel="icon" href="https://paydock.com/wp-content/uploads/2016/10/logo_v3_hexagon.png" sizes="192x192" />
+    <link rel="apple-touch-icon-precomposed" href="https://paydock.com/wp-content/uploads/2016/10/logo_v3_hexagon.png" />
+    <meta name="msapplication-TileImage" content="https://paydock.com/wp-content/uploads/2016/10/logo_v3_hexagon.png" />
+
+    <!-- Styles -->
+    <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/responsive.css">
+    <!-- Styles end -->
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="wrapper">
+
+                    <a class="logo" href="https://paydock.com/"><i class="fa fa-hand-holding"></i> Children's Giving Fund</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- form section -->
+<section class="form_holder">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="wrapper">
+                    <div class="donate_form">
+                        <div class="form_nav">
+                            <a id="giveOnceLink" href="javascript:giveOnce();" >Give once</a>
+                            <a id="giveMonthlyLink" href="javascript:giveMonthly();">Give monthly</a>
+                        </div>
+                        <div class="form_content">
+                            <form id="donateForm" method="post">
+
+                                <input id="hidden_giving" type="hidden" name="giving" value="" />
+                                <input id="one_time_token" type="hidden" name="one_time_token" />
+                                <input id="gift_amount" type="hidden" name="gift_amount" />
+                                <input id="method" type="hidden" name="method" />
+
+                                <div class="form_wrap">
+                                    <div id="formHeader" class="form_header"></div>
+
+                                    <div id="stepOne" class="step_wrap form_options">
+                                        <label id="amountA"></label>
+                                        <label id="amountB"></label>
+                                        <label id="amountC"></label>
+                                        <label id="amountD"></label>
+                                        <a href="#" class="amount_other">Other amount</a>
+                                        <div class="input_otheramount_holder">
+                                            <input id="otherAmount" type="number" placeholder="Other">
+                                        </div>
+                                        <button type="button" class="btn" onclick="stepTwo()">Next Step &gt;</button>
+                                    </div>
+
+                                    <div id="stepTwo" class="step_wrap form_options inner_form_options button_wrap">
+
+                                        <div class="form_options_wrap card_form_wrap">
+
+                                            <div class="field field_short field_name_f">
+                                                <input name="first_name" type="text" placeholder="First Name">
+                                            </div>
+                                            <div class="field field_short field_name_l">
+                                                <input name="last_name" type="text" placeholder="Last Name">
+                                            </div>
+                                            <div class="field field_long">
+                                                <input name="email" type="email" placeholder="Email">
+                                            </div>
+                                            <div class="field field_long">
+                                                <input name="phone" type="tel" placeholder="Mobile">
+                                            </div>
+                                        </div>
+
+                                        <button type="button" class="btn btn-dark" onclick="stepOne()">&lt; Back</button>
+                                        <button type="button" class="btn" onclick="stepThree()">Next Step &gt;</button>
+                                    </div>
+
+                                    <div id="stepThree" class="step_wrap form_options inner_form_options hidden">
+
+                                        <div id="payment_methods" class="form_nav_in">
+                                            <a href="javascript:payWithCard();" id="with_card">Card</a>
+                                            <a href="javascript:payWithDirectDebit();" id="with_bank">Direct Debit</a>
+                                            <a href="javascript:payWithPayPal();" id="with_paypal">PayPal</a>
+                                        </div>
+
+                                        <div  id="cardDetails" class="form_options button_wrap payment_wrap ">
+                                            <div class="form_options_wrap">
+                                                  <div id="widget"></div>
+                                            </div>
+                                            <button type="button" class="btn btn-dark" onclick="stepTwo()">&lt; Back</button>
+                                            <button id="donateButtonCard" type="submit" class="btn">DONATE</button>
+
+                                        </div>
+
+                                        <div  id="bankDetails" class="form_options button_wrap payment_wrap ">
+                                               <div class="form_options_wrap">
+                                                        <div class="field field_long">
+                                                            <input type="text" name="bank_name" placeholder="Account Name">
+                                                        </div>
+
+                                                        <div class="field field_short field_name_f">
+                                                            <input type="text" name="bank_bsb" placeholder="BSB">
+                                                        </div>
+                                                        <div class="field field_short field_name_l">
+                                                            <input type="text" name="bank_number" placeholder="Account Number">
+                                                        </div>
+                                                </div>
+                                            <button type="button" class="btn btn-dark" onclick="stepTwo()">&lt; Back</button>
+                                            <button id="donateButtonBank" type="submit" class="btn">DONATE</button>
+                                        </div>
+                                        <div id="paypalButton"  class="form_options payment_wrap">
+                                                <button type="button" id="paypal_button" class="btn">
+                                                    <i class="fab fa-paypal"></i> Checkout with PayPal
+                                                </button>
+
+
+                                                <button type="button" class="btn btn-dark" onclick="stepTwo()">&lt; Back</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="content_wrap">
+                        <h1>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h1>
+                        <p>Mauris vitae ultricies leo integer malesuada nunc vel. Mauris vitae ultricies leo integer
+                            malesuada nunc vel.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- form section end -->
+<!-- footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="menu_wrap">
+                    <ul class="social_menu">
+                        <li><a href="https://paydock.com/"><i class="fab fa-linkedin"></i></a></li>
+                        <li><a href="https://paydock.com/"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="https://paydock.com/"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="https://paydock.com/"><i class="fab fa-facebook"></i></a></li>
+                    </ul>
+                    <ul class="info_menu">
+                        <li><a href="https://paydock.com/">Privacy policy</a></li>
+                        <li class="info_mails"><a href="https://paydock.com/">Join our newsletter</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="content_wrap">
+                    <p>© 2019 | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua. Sed elementum tempus egestas sed. Viverra mauris in
+                        aliquam sem fringilla ut.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</footer>
+<!-- footer -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.bundle.min.js"></script>
+<script src="/js/donation.js"></script>
+<!-- Scripts end -->
+
+<script src="https://app-sandbox.paydock.com/v1/widget.umd.js" ></script>
+<script>
+    var widget = new paydock.HtmlWidget('#widget', '<YOUR_PUBLIC_KEY>', '<YOUR_GATEWAY_ID>');
+    widget.setRefId('5de5422aba62b');
+    widget.interceptSubmitForm('#donateForm');
+    widget.setStyles({
+        background_color: '#ffffff',
+        border_color: '#c1c1ba',
+        text_color: '#333232',
+        font_size: '14px',
+        font_family: 'ProximaNovaA-Semibold'
+    });
+    widget.setElementStyle('input',{
+        border_radius: '4px',
+        padding: '13px 10px',
+        height: '48px',
+        color: '#333232'
+    });
+    widget.setElementStyle('input', 'focus', {
+        border: 'grey solid 1px'
+    });
+
+    widget.setFormLabels({
+        card_name: '',
+        card_number: '',
+        expire_month: '',
+        card_ccv: ''
+    });
+    widget.on("afterLoad", function(data) {
+        $('#widget>iframe').attr('scrolling','no');
+        $('#widget').show();
+        $('#submit_button').show();
+        $('#spinner').hide();
+    });
+    widget.on("finish", function(data) {
+        $('#one_time_token').val(data.payment_source);
+    });
+    widget.useAutoResize();
+    widget.load();
+
+var button = new paydock.PaypalCheckoutButton('#paypal_button', '<YOUR_PUBLIC_KEY>', '<YOUR_PAYPAL_GATEWAY_ID>');
+</script>
+
+
+</body>
+</html>
